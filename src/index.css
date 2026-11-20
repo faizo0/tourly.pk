@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* 2026 Ultra-Modern Luxury Travel Palette */
+  --color-copper: #c86d51;
+  --color-copper-hover: #b35c41;
+  --color-bronze: #b89768;
+  --color-obsidian: #0d0f12;
+  --color-alabaster: #f9f8f6;
+  --color-pine-slate: #162221;
+  --color-surface: #ffffff;
+  --color-ink: #0d0f12;
+  --color-muted: #525860;
+  --color-canvas: #f4f2ee;
+
+  /* Legacy tokens retained for untouched modules */
+  --color-emerald-deep: #0b2b26;
+  --color-midnight: #111827;
+  --color-champagne: #d4af37;
+  --color-ivory: #faf9f6;
+  --color-pine: #162221;
+  --color-brass: #b89768;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-alabaster);
+    color: var(--color-obsidian);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .kenburns-active {
+      animation: none !important;
+      transform: scale(1.02) !important;
+    }
+
+    .animate-marquee {
+      animation: none !important;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+}
+
+@keyframes kenBurnsSlow {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.09) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+.kenburns-active {
+  animation: kenBurnsSlow 8s ease-out forwards;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marqueeScroll 46s linear infinite;
+}
